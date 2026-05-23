@@ -1,6 +1,7 @@
 import { FiLock } from 'react-icons/fi';
 import { HiArrowTrendingUp } from 'react-icons/hi2';
 import { PiMusicNoteSimpleFill } from 'react-icons/pi';
+import { motion } from 'framer-motion';
 
 
 export default function Hero() {
@@ -35,16 +36,24 @@ export default function Hero() {
             <div className="relative z-10 flex flex-col items-center text-center px-6 pt-10 w-full max-w-5xl mx-auto">
 
                 {/* Headline */}
-                <h1
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                     className="font-bold text-gray-900 leading-[1.12] tracking-tight"
                     style={{ fontSize: 'clamp(2.6rem, 6vw, 4.2rem)' }}
                 >
                     Track every dollar,<br />grow every investment.
-                </h1>
+                </motion.h1>
 
-                <p className="mt-5 text-[1.05rem] text-gray-600 max-w-md leading-relaxed">
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+                    className="mt-5 text-[1.05rem] text-gray-600 max-w-md leading-relaxed"
+                >
                     Smarter tools designed to help you grow your wealth and take control of your financial future.
-                </p>
+                </motion.p>
 
                 {/* ── Phone + floating cards zone ── */}
                 <div
@@ -53,7 +62,10 @@ export default function Hero() {
                 >
 
                     {/* LEFT SIDE */}
-                    <div
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
                         className="absolute z-20"
                         style={{ left: 'clamp(10px, 6%, 140px)', top: '80px' }}
                     >
@@ -99,10 +111,13 @@ export default function Hero() {
                                 <span className="text-[12px] text-gray-400">from last week</span>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* RIGHT SIDE */}
-                    <div
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
                         className="absolute z-20 flex flex-col items-end"
                         style={{ right: 'clamp(10px, 6%, 140px)', top: '60px' }}
                     >
@@ -150,10 +165,15 @@ export default function Hero() {
                             <HiArrowTrendingUp size={14} />
                             <span>Track effectively</span>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* PHONE */}
-                    <div className="relative z-10 flex justify-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+                        className="relative z-10 flex justify-center"
+                    >
                         <img
                             src="https://framerusercontent.com/images/8EqJJl7WcpFsqJnET6imexN7M0.png?scale-down-to=2048&width=973&height=2100"
                             alt="Lumera App"
@@ -165,7 +185,7 @@ export default function Hero() {
                             }}
                             className="drop-shadow-2xl"
                         />
-                    </div>
+                    </motion.div>
                 </div>
 
 
@@ -218,20 +238,22 @@ export default function Hero() {
 
 
                 {/* CTA buttons */}
-                <div className="flex items-center gap-3">
+                <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
+                    className="flex items-center gap-3"
+                >
                     <button
-                        className="text-white text-sm font-semibold px-7 py-3 rounded-full transition-all hover:opacity-90"
+                        className="text-white text-sm font-semibold px-7 py-3 rounded-full transition-all hover:opacity-90 animate-none cursor-pointer"
                         style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)' }}
                     >
                         Download App
                     </button>
-                    <button className="text-gray-700 text-sm font-semibold px-7 py-3 rounded-full border border-gray-200 bg-white hover:bg-gray-50 transition-colors">
+                    <button className="text-gray-700 text-sm font-semibold px-7 py-3 rounded-full border border-gray-200 bg-white hover:bg-gray-50 transition-colors cursor-pointer">
                         Contact Sales
                     </button>
-                </div>
-
-
-
+                </motion.div>
 
             </div>
         </section>

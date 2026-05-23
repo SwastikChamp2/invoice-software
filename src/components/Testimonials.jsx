@@ -257,7 +257,6 @@ export default function Testimonials() {
                         <ScrollReveal
                             key={index}
                             delay={index * 0.08}
-                            duration={0.8}
                             className={`text-center ${index !== 2
                                 ? 'border-r border-[#efefef]'
                                 : ''
@@ -272,6 +271,7 @@ export default function Testimonials() {
                             </div>
                         </ScrollReveal>
                     ))}
+                </div>
             </div>
         </section>
     )

@@ -1,3 +1,5 @@
+import ScrollReveal from './ScrollReveal'
+
 const posts = [
     {
         title: '5 Metrics every SaaS founder should track',
@@ -21,58 +23,66 @@ export default function Blog() {
         <section className="bg-white py-24 px-5 md:px-8">
             <div className="max-w-[1220px] mx-auto">
                 {/* Header */}
-                <div className="flex flex-col items-center text-center mb-14">
-                    {/* Chip */}
-                    <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6 w-fit">
-                        <span className="text-[14px] text-[#707070] font-medium">
-                            Blog
-                        </span>
-                    </div>
+                <ScrollReveal>
+                    <div className="flex flex-col items-center text-center mb-14">
+                        {/* Chip */}
+                        <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6 w-fit">
+                            <span className="text-[14px] text-[#707070] font-medium">
+                                Blog
+                            </span>
+                        </div>
 
-                    {/* Heading */}
-                    <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[720px]">
-                        Insights to spend smarter.
-                    </h2>
-                </div>
+                        {/* Heading */}
+                        <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[720px]">
+                            Insights to spend smarter.
+                        </h2>
+                    </div>
+                </ScrollReveal>
 
                 {/* Blog Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                     {posts.map((post, index) => (
-                        <article
+                        <ScrollReveal
                             key={index}
-                            className="group bg-[#fafafa] border border-[#f1f1f1] rounded-[30px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] cursor-pointer"
+                            delay={index * 0.08}
                         >
-                            {/* Image */}
-                            <div className="overflow-hidden p-2">
-                                <div className="overflow-hidden rounded-[24px]">
-                                    <img
-                                        src={post.img}
-                                        alt={post.title}
-                                        className="w-full h-[290px] object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                                    />
+                            <article
+                                className="group bg-[#fafafa] border border-[#f1f1f1] rounded-[30px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] cursor-pointer"
+                            >
+                                {/* Image */}
+                                <div className="overflow-hidden p-2">
+                                    <div className="overflow-hidden rounded-[24px]">
+                                        <img
+                                            src={post.img}
+                                            alt={post.title}
+                                            className="w-full h-[290px] object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                                        />
+                                    </div>
                                 </div>
-                            </div>
 
-                            {/* Content */}
-                            <div className="px-7 pb-7 pt-2">
-                                <h3 className="text-[24px] leading-[1.08] tracking-[-0.045em] font-medium text-[#111111] mb-4 max-w-[320px] transition-colors duration-300">
-                                    {post.title}
-                                </h3>
+                                {/* Content */}
+                                <div className="px-7 pb-7 pt-2">
+                                    <h3 className="text-[24px] leading-[1.08] tracking-[-0.045em] font-medium text-[#111111] mb-4 max-w-[320px] transition-colors duration-300">
+                                        {post.title}
+                                    </h3>
 
-                                <p className="text-[15px] leading-[1.55] text-[#6f6f6f] max-w-[320px] line-clamp-3">
-                                    {post.desc}
-                                </p>
-                            </div>
-                        </article>
+                                    <p className="text-[15px] leading-[1.55] text-[#6f6f6f] max-w-[320px] line-clamp-3">
+                                        {post.desc}
+                                    </p>
+                                </div>
+                            </article>
+                        </ScrollReveal>
                     ))}
                 </div>
 
                 {/* Button */}
-                <div className="flex justify-center mt-14">
-                    <button className="h-[56px] px-8 rounded-full bg-[#111111] text-white text-[18px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:bg-black transition-all duration-300 hover:scale-[1.02]">
-                        Read More
-                    </button>
-                </div>
+                <ScrollReveal delay={0.15}>
+                    <div className="flex justify-center mt-14">
+                        <button className="h-[56px] px-8 rounded-full bg-[#111111] text-white text-[18px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:bg-black transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+                            Read More
+                        </button>
+                    </div>
+                </ScrollReveal>
             </div>
         </section>
     )

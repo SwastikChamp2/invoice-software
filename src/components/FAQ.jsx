@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { HiPlus } from 'react-icons/hi'
+import ScrollReveal from './ScrollReveal'
 
 const faqs = [
     {
@@ -41,31 +42,33 @@ export default function FAQ() {
             <div className="max-w-[1220px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-[380px_1fr] gap-10 md:gap-16">
                     {/* Left Content */}
-                    <div className="pt-1">
-                        {/* Chip */}
-                        <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6 w-fit">
-                            <span className="text-[14px] text-[#707070] font-medium">
-                                FAQ
-                            </span>
+                    <ScrollReveal className="pt-1">
+                        <div>
+                            {/* Chip */}
+                            <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6 w-fit">
+                                <span className="text-[14px] text-[#707070] font-medium">
+                                    FAQ
+                                </span>
+                            </div>
+
+                            {/* Heading */}
+                            <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[720px]">
+                                Questions you
+                                <br />
+                                might have.
+                            </h2>
+
+                            {/* Description */}
+                            <p className="mt-6 text-[16px] leading-[1.5] text-[#6f6f6f] max-w-[320px]">
+                                Everything you need to know before getting started.
+                            </p>
+
+                            {/* Button */}
+                            <button className="mt-10 h-[52px] px-7 rounded-full border border-[#ececec] bg-white text-[18px] font-medium text-[#111111] shadow-[0_8px_20px_rgba(0,0,0,0.05)] hover:bg-[#fafafa] transition-all cursor-pointer">
+                                Ask a question
+                            </button>
                         </div>
-
-                        {/* Heading */}
-                        <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[720px]">
-                            Questions you
-                            <br />
-                            might have.
-                        </h2>
-
-                        {/* Description */}
-                        <p className="mt-6 text-[16px] leading-[1.5] text-[#6f6f6f] max-w-[320px]">
-                            Everything you need to know before getting started.
-                        </p>
-
-                        {/* Button */}
-                        <button className="mt-10 h-[52px] px-7 rounded-full border border-[#ececec] bg-white text-[18px] font-medium text-[#111111] shadow-[0_8px_20px_rgba(0,0,0,0.05)] hover:bg-[#fafafa] transition-all">
-                            Ask a question
-                        </button>
-                    </div>
+                    </ScrollReveal>
 
                     {/* FAQ Accordions */}
                     <div className="bg-[#fafafa] border border-[#f1f1f1] rounded-[34px] p-5 md:p-6">
@@ -74,47 +77,51 @@ export default function FAQ() {
                                 const isOpen = open === index
 
                                 return (
-                                    <div
+                                    <ScrollReveal
                                         key={index}
-                                        className="bg-white border border-[#f1f1f1] rounded-[24px] overflow-hidden transition-all duration-300"
+                                        delay={index * 0.06}
                                     >
-                                        <button
-                                            onClick={() =>
-                                                setOpen(
-                                                    isOpen ? null : index
-                                                )
-                                            }
-                                            className="w-full flex items-center justify-between gap-6 text-left px-8 py-7"
+                                        <div
+                                            className="bg-white border border-[#f1f1f1] rounded-[24px] overflow-hidden transition-all duration-300"
                                         >
-                                            <span className="text-[18px] md:text-[19px] leading-[1.3] tracking-[-0.035em] font-medium text-[#151515] pr-4">
-                                                {faq.question}
-                                            </span>
+                                            <button
+                                                onClick={() =>
+                                                    setOpen(
+                                                        isOpen ? null : index
+                                                    )
+                                                }
+                                                className="w-full flex items-center justify-between gap-6 text-left px-8 py-7 cursor-pointer"
+                                            >
+                                                <span className="text-[18px] md:text-[19px] leading-[1.3] tracking-[-0.035em] font-medium text-[#151515] pr-4">
+                                                    {faq.question}
+                                                </span>
+
+                                                <div
+                                                    className={`shrink-0 transition-transform duration-300 ${isOpen
+                                                        ? 'rotate-45'
+                                                        : ''
+                                                        }`}
+                                                >
+                                                    <HiPlus className="text-[24px] text-[#a5a5a5]" />
+                                                </div>
+                                            </button>
 
                                             <div
-                                                className={`shrink-0 transition-transform duration-300 ${isOpen
-                                                    ? 'rotate-45'
-                                                    : ''
+                                                className={`grid transition-all duration-300 ease-in-out ${isOpen
+                                                    ? 'grid-rows-[1fr]'
+                                                    : 'grid-rows-[0fr]'
                                                     }`}
                                             >
-                                                <HiPlus className="text-[24px] text-[#a5a5a5]" />
-                                            </div>
-                                        </button>
-
-                                        <div
-                                            className={`grid transition-all duration-300 ease-in-out ${isOpen
-                                                ? 'grid-rows-[1fr]'
-                                                : 'grid-rows-[0fr]'
-                                                }`}
-                                        >
-                                            <div className="overflow-hidden">
-                                                <div className="px-8 pb-7 pr-16">
-                                                    <p className="text-[15px] leading-[1.7] text-[#707070] max-w-[90%]">
-                                                        {faq.answer}
-                                                    </p>
+                                                <div className="overflow-hidden">
+                                                    <div className="px-8 pb-7 pr-16">
+                                                        <p className="text-[15px] leading-[1.7] text-[#707070] max-w-[90%]">
+                                                            {faq.answer}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </ScrollReveal>
                                 )
                             })}
                         </div>

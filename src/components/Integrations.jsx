@@ -3,6 +3,8 @@ import integrationlogo2 from '../assets/images/integrationlogo2.avif'
 import integrationlogo3 from '../assets/images/integrationlogo3.avif'
 import integrationlogo4 from '../assets/images/integrationlogo4.avif'
 import integrationlogo5 from '../assets/images/integrationlogo5.avif'
+import ScrollReveal from './ScrollReveal'
+import { motion } from 'framer-motion'
 
 const logos = [
     integrationlogo1,
@@ -32,19 +34,21 @@ export default function Integrations() {
             <div className="max-w-[1180px] mx-auto">
 
                 {/* HEADING */}
-                <div className="flex flex-col items-center text-center mb-16">
-                    <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6">
-                        <span className="text-[14px] text-[#707070] font-medium">
-                            Integrations
-                        </span>
-                    </div>
+                <ScrollReveal>
+                    <div className="flex flex-col items-center text-center mb-16">
+                        <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6">
+                            <span className="text-[14px] text-[#707070] font-medium">
+                                Integrations
+                            </span>
+                        </div>
 
-                    <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[640px]">
-                        Works with the tools
-                        <br />
-                        you already use.
-                    </h2>
-                </div>
+                        <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[640px]">
+                            Works with the tools
+                            <br />
+                            you already use.
+                        </h2>
+                    </div>
+                </ScrollReveal>
 
                 {/* ARC SECTION */}
                 <div
@@ -58,7 +62,7 @@ export default function Integrations() {
                     {/* PERFECT ATMOSPHERIC ARC GLOW */}
                     {/* ========================================= */}
 
-                    <div
+                    <motion.div
                         className="absolute bottom-0 left-1/2 pointer-events-none"
                         style={{
                             transform: 'translateX(-50%)',
@@ -67,6 +71,10 @@ export default function Integrations() {
                             opacity: 0.95,
                             mixBlendMode: 'normal',
                         }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 0.95 }}
+                        viewport={{ once: true, margin: '-100px' }}
+                        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <svg
                             width="860"
@@ -178,7 +186,7 @@ export default function Integrations() {
                                 strokeLinecap="round"
                             />
                         </svg>
-                    </div>
+                    </motion.div>
 
                     {/* ========================================= */}
                     {/* LOGO CARDS */}
@@ -207,7 +215,7 @@ export default function Integrations() {
                                     zIndex: 10,
                                 }}
                             >
-                                <div
+                                <motion.div
                                     className="
                                         w-full
                                         h-full
@@ -228,6 +236,14 @@ export default function Integrations() {
                                         border: '1px solid rgba(255,255,255,0.7)',
                                         backdropFilter: 'blur(10px)',
                                     }}
+                                    initial={{ opacity: 0, scale: 0.75 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true, margin: '-60px' }}
+                                    transition={{
+                                        duration: 1.2,
+                                        delay: index * 0.08,
+                                        ease: [0.16, 1, 0.3, 1]
+                                    }}
                                 >
                                     <img
                                         src={logos[index]}
@@ -244,7 +260,7 @@ export default function Integrations() {
                                             transform: `rotate(${-item.rotateDeg}deg)`,
                                         }}
                                     />
-                                </div>
+                                </motion.div>
                             </div>
                         )
                     })}
