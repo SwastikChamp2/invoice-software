@@ -1,55 +1,123 @@
 import { useState } from 'react'
-import { HiChevronDown } from 'react-icons/hi'
+import { HiPlus } from 'react-icons/hi'
 
 const faqs = [
-    'How does this platform help our team manage financial statements?',
-    'Can we connect our existing system and find our financial tools easily?',
-    'Is our company\'s financial data secured and protected here?',
-    'Do you support different account levels?',
-    'How long does it take to set up anything on Lumera?',
+    {
+        question:
+            'How does this platform help our team manage financial data better?',
+        answer:
+            'Lumera gives your team a centralized dashboard for tracking transactions, reports, and budgets in real time — helping everyone stay aligned and make faster decisions.',
+    },
+    {
+        question:
+            'Can we connect our existing banks and financial tools easily?',
+        answer:
+            'Yes, Lumera supports secure integrations with major banks, payment platforms, and accounting tools so your data stays synced automatically.',
+    },
+    {
+        question:
+            'Is our company’s financial data secure and protected here?',
+        answer:
+            'Absolutely. We use encrypted infrastructure, secure authentication, and enterprise-grade security practices to keep your financial information protected.',
+    },
+    {
+        question: 'Do you support different access levels?',
+        answer:
+            'You can create multiple team roles with custom permissions so every member only accesses the information they need.',
+    },
+    {
+        question:
+            'How long does it take to set everything up initially?',
+        answer:
+            'Most teams are fully set up within a few minutes. Connecting accounts and inviting teammates is designed to be fast and intuitive.',
+    },
 ]
 
 export default function FAQ() {
-    const [open, setOpen] = useState(0)
+    const [open, setOpen] = useState(null)
 
     return (
-        <section className="py-24 px-6 bg-white">
-            <div className="max-w-5xl mx-auto">
-                <div className="flex gap-16">
-                    {/* Left */}
-                    <div className="w-80 shrink-0">
-                        <p className="text-xs text-gray-400 uppercase tracking-widest mb-3">FAQ</p>
-                        <h2 className="text-3xl font-semibold text-gray-900 tracking-tight leading-snug">
-                            Questions you<br />might have.
+        <section className="bg-white py-24 px-5 md:px-8">
+            <div className="max-w-[1220px] mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-[380px_1fr] gap-10 md:gap-16">
+                    {/* Left Content */}
+                    <div className="pt-1">
+                        {/* Chip */}
+                        <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6 w-fit">
+                            <span className="text-[14px] text-[#707070] font-medium">
+                                FAQ
+                            </span>
+                        </div>
+
+                        {/* Heading */}
+                        <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[720px]">
+                            Questions you
+                            <br />
+                            might have.
                         </h2>
-                        <p className="text-sm text-gray-500 mt-3 leading-relaxed">
-                            Can't find the answer you're looking for? Try contacting us.
+
+                        {/* Description */}
+                        <p className="mt-6 text-[16px] leading-[1.5] text-[#6f6f6f] max-w-[320px]">
+                            Everything you need to know before getting started.
                         </p>
-                        <a href="#" className="mt-4 inline-block text-sm text-gray-900 font-medium underline underline-offset-2 hover:text-blue-500 transition-colors">
-                            Get a answer
-                        </a>
+
+                        {/* Button */}
+                        <button className="mt-10 h-[52px] px-7 rounded-full border border-[#ececec] bg-white text-[18px] font-medium text-[#111111] shadow-[0_8px_20px_rgba(0,0,0,0.05)] hover:bg-[#fafafa] transition-all">
+                            Ask a question
+                        </button>
                     </div>
 
-                    {/* Right */}
-                    <div className="flex-1 space-y-0">
-                        {faqs.map((q, i) => (
-                            <div key={i} className="border-b border-gray-100">
-                                <button
-                                    className="w-full flex items-center justify-between py-4 text-left"
-                                    onClick={() => setOpen(open === i ? -1 : i)}
-                                >
-                                    <span className="text-sm text-gray-800 font-medium pr-4">{q}</span>
-                                    <HiChevronDown
-                                        className={`text-gray-400 text-lg shrink-0 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}
-                                    />
-                                </button>
-                                {open === i && (
-                                    <div className="pb-4 text-xs text-gray-500 leading-relaxed">
-                                        Lumera provides enterprise-grade tools to help your team track, analyze, and optimize financial operations with real-time data and smart automation.
+                    {/* FAQ Accordions */}
+                    <div className="bg-[#fafafa] border border-[#f1f1f1] rounded-[34px] p-5 md:p-6">
+                        <div className="space-y-4">
+                            {faqs.map((faq, index) => {
+                                const isOpen = open === index
+
+                                return (
+                                    <div
+                                        key={index}
+                                        className="bg-white border border-[#f1f1f1] rounded-[24px] overflow-hidden transition-all duration-300"
+                                    >
+                                        <button
+                                            onClick={() =>
+                                                setOpen(
+                                                    isOpen ? null : index
+                                                )
+                                            }
+                                            className="w-full flex items-center justify-between gap-6 text-left px-8 py-7"
+                                        >
+                                            <span className="text-[18px] md:text-[19px] leading-[1.3] tracking-[-0.035em] font-medium text-[#151515] pr-4">
+                                                {faq.question}
+                                            </span>
+
+                                            <div
+                                                className={`shrink-0 transition-transform duration-300 ${isOpen
+                                                    ? 'rotate-45'
+                                                    : ''
+                                                    }`}
+                                            >
+                                                <HiPlus className="text-[24px] text-[#a5a5a5]" />
+                                            </div>
+                                        </button>
+
+                                        <div
+                                            className={`grid transition-all duration-300 ease-in-out ${isOpen
+                                                ? 'grid-rows-[1fr]'
+                                                : 'grid-rows-[0fr]'
+                                                }`}
+                                        >
+                                            <div className="overflow-hidden">
+                                                <div className="px-8 pb-7 pr-16">
+                                                    <p className="text-[15px] leading-[1.7] text-[#707070] max-w-[90%]">
+                                                        {faq.answer}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                )}
-                            </div>
-                        ))}
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

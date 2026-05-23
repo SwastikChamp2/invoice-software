@@ -1,51 +1,57 @@
-import { HiCheckCircle } from 'react-icons/hi'
+import {
+    HiCheck,
+    HiOutlineCube,
+    HiOutlineSparkles,
+    HiOutlineRocketLaunch,
+} from 'react-icons/hi2'
 
 const plans = [
     {
         name: 'Starter',
+        icon: HiOutlineCube,
         price: '$0',
-        period: '/mo',
-        desc: 'Perfect for new members who are beginning their financial journey.',
+        period: '/ mo',
+        desc: 'Perfect for solo founders and early-stage projects.',
         cta: 'Get Started',
-        ctaStyle: 'bg-gray-100 text-gray-900 hover:bg-gray-200',
         highlighted: false,
         features: [
-            'Up to 3 connected accounts',
-            'Basic analytics reports',
-            'Basic reports',
-            'Community support',
+            '1 connected account',
+            'Real-time dashboard access',
+            'Basic reporting',
+            'Email support',
             'Up to 2 team members',
         ],
     },
     {
         name: 'Growth',
+        icon: HiOutlineSparkles,
         price: '$25',
-        period: '/mo',
-        desc: 'Quarterly pricing saves money for growing teams and portfolios.',
+        period: '/ mo',
+        desc: 'Ideal for growing teams who need deeper insights.',
         cta: 'Get Started',
-        ctaStyle: 'bg-blue-500 text-white hover:bg-blue-600',
         highlighted: true,
+        badge: 'Best Deal',
         features: [
-            'Up to 10 connected accounts',
-            'Advanced analytics & reports',
-            'Automated monthly reports',
+            'Up to 5 connected accounts',
+            'Advanced analytics',
+            'Automated reports',
             'Priority email support',
             'Up to 10 team members',
         ],
     },
     {
         name: 'Scale',
+        icon: HiOutlineRocketLaunch,
         price: '$75',
-        period: '/mo',
-        desc: 'For established teams ready to scale and optimize their finances.',
+        period: '/ mo',
+        desc: 'For established teams ready to maximize performance.',
         cta: 'Contact Us',
-        ctaStyle: 'bg-gray-100 text-gray-900 hover:bg-gray-200',
         highlighted: false,
         features: [
             'Unlimited connected accounts',
-            'Enterprise analytics suite',
-            'Dedicated account manager',
-            '24/7 premium support',
+            'Custom dashboards',
+            'Exportable reports',
+            'Dedicated support',
             'Unlimited team members',
         ],
     },
@@ -53,50 +59,106 @@ const plans = [
 
 export default function Pricing() {
     return (
-        <section id="pricing" className="py-24 px-6 bg-white">
-            <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-12">
-                    <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">Pricing</p>
-                    <h2 className="text-4xl font-semibold text-gray-900 tracking-tight">
+        <section
+            id="pricing"
+            className="w-full bg-[#ffffff] py-24 md:py-32 px-6"
+        >
+            <div className="max-w-[1220px] mx-auto">
+                {/* Header */}
+                <div className="flex flex-col items-center text-center mb-16">
+                    <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6">
+                        <span className="text-[14px] text-[#707070] font-medium">
+                            Pricing
+                        </span>
+                    </div>
+
+                    <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[720px]">
                         Simple plans, clear value.
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4 items-start">
-                    {plans.map((plan, i) => (
-                        <div
-                            key={i}
-                            className={`rounded-2xl border p-6 ${plan.highlighted
-                                ? 'border-blue-500 shadow-lg shadow-blue-100 bg-white relative'
-                                : 'border-gray-200 bg-white'}`}
-                        >
-                            {plan.highlighted && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-[10px] font-medium px-3 py-0.5 rounded-full">
-                                    Most Popular
-                                </div>
-                            )}
-                            <div className="flex items-center gap-1.5 mb-3">
-                                <div className={`w-4 h-4 rounded-full ${plan.highlighted ? 'bg-blue-500' : 'bg-gray-200'}`} />
-                                <span className="text-sm font-semibold text-gray-700">{plan.name}</span>
-                            </div>
-                            <div className="flex items-baseline gap-0.5 mb-1">
-                                <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-                                <span className="text-sm text-gray-400">{plan.period}</span>
-                            </div>
-                            <p className="text-xs text-gray-500 mb-5 leading-relaxed">{plan.desc}</p>
-                            <button className={`w-full py-2.5 rounded-full text-sm font-medium transition-colors ${plan.ctaStyle}`}>
-                                {plan.cta}
-                            </button>
-                            <div className="mt-5 space-y-2.5">
-                                {plan.features.map((feat, fi) => (
-                                    <div key={fi} className="flex items-start gap-2">
-                                        <HiCheckCircle className={`text-base mt-0.5 shrink-0 ${plan.highlighted ? 'text-blue-500' : 'text-gray-400'}`} />
-                                        <span className="text-xs text-gray-600">{feat}</span>
+                {/* Pricing Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+                    {plans.map((plan, i) => {
+                        const Icon = plan.icon
+
+                        return (
+                            <div
+                                key={i}
+                                className={`relative rounded-[28px] bg-[#fbfbfb] border overflow-visible transition-all ${plan.highlighted
+                                    ? 'border-[#4f83f1] shadow-[0_10px_30px_rgba(79,131,241,0.10)]'
+                                    : 'border-[#eeeeee]'
+                                    }`}
+                            >
+                                {/* Best Deal Badge */}
+                                {plan.highlighted && (
+                                    <div className="absolute left-1/2 -translate-x-1/2 -top-5 z-20">
+                                        <div className="bg-[#4f83f1] text-white text-[14px] font-medium px-5 py-2 rounded-full shadow-lg">
+                                            {plan.badge}
+                                        </div>
                                     </div>
-                                ))}
+                                )}
+
+                                <div className="p-7 md:p-8">
+                                    {/* Plan Header */}
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <div className="w-11 h-11 rounded-full bg-[#f2f2f2] flex items-center justify-center">
+                                            <Icon className="text-[20px] text-[#111111]" />
+                                        </div>
+
+                                        <h3 className="text-[22px] tracking-[-0.04em] font-medium text-[#111111]">
+                                            {plan.name}
+                                        </h3>
+                                    </div>
+
+                                    {/* Price */}
+                                    <div className="flex items-end gap-2 mb-4">
+                                        <span className="text-[52px] leading-none tracking-[-0.06em] font-medium text-[#111111]">
+                                            {plan.price}
+                                        </span>
+
+                                        <span className="text-[17px] text-[#666666] mb-[7px]">
+                                            {plan.period}
+                                        </span>
+                                    </div>
+
+                                    {/* Description */}
+                                    <p className="text-[16px] leading-[1.45] text-[#6d6d6d] max-w-[260px] mb-7">
+                                        {plan.desc}
+                                    </p>
+
+                                    {/* Button */}
+                                    <button
+                                        className={`w-full h-[52px] rounded-full text-[18px] font-medium transition-all shadow-[0_8px_20px_rgba(0,0,0,0.10)] ${plan.highlighted
+                                            ? 'bg-[#4f83f1] text-white hover:bg-[#4479eb]'
+                                            : 'bg-black text-white hover:bg-[#111111]'
+                                            }`}
+                                    >
+                                        {plan.cta}
+                                    </button>
+
+                                    {/* Divider */}
+                                    <div className="w-full h-px bg-[#ececec] my-7" />
+
+                                    {/* Features */}
+                                    <div className="space-y-4">
+                                        {plan.features.map((feature, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex items-start gap-3"
+                                            >
+                                                <HiCheck className="text-[17px] text-[#666666] mt-[3px] shrink-0" />
+
+                                                <span className="text-[16px] leading-[1.35] text-[#5f5f5f]">
+                                                    {feature}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
             </div>
         </section>

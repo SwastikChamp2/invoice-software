@@ -19,7 +19,7 @@ export default function Hero() {
             />
 
             {/* Soft white overlay */}
-            <div className="absolute inset-0 bg-white/25" />
+            <div className="absolute inset-0 bg-white/33" />
 
             {/* Bottom fade-to-white gradient */}
             <div
@@ -42,7 +42,7 @@ export default function Hero() {
                     Track every dollar,<br />grow every investment.
                 </h1>
 
-                <p className="mt-5 text-[1.05rem] text-gray-500 max-w-md leading-relaxed">
+                <p className="mt-5 text-[1.05rem] text-gray-600 max-w-md leading-relaxed">
                     Smarter tools designed to help you grow your wealth and take control of your financial future.
                 </p>
 

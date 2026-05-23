@@ -1,61 +1,75 @@
 const posts = [
     {
         title: '5 Metrics every SaaS founder should track',
-        desc: 'Discover the key financial metrics that successful startup founders use to guide every major business decision.',
-        img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80',
-        tag: 'Finance',
+        desc: 'Learn which key performance indicators matter most when scaling your SaaS product and making smarter financial decisions.',
+        img: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop',
     },
     {
-        title: 'How we designed a crisper dashboard experience',
-        desc: 'A behind-the-scenes look at the design process that shaped Lumera\'s clean and intuitive dashboard.',
-        img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80',
-        tag: 'Design',
+        title: 'How we designed a simpler dashboard experience',
+        desc: 'A behind-the-scenes look at how we built a dashboard that’s clear, fast, and user-friendly from day one.',
+        img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop',
     },
     {
         title: 'Why secure syncing matters more than ever',
-        desc: 'We explore the evolution of financial data security and why Lumera\'s approach sets the new standard.',
-        img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=80',
-        tag: 'Security',
+        desc: 'Explore how our security-first approach keeps your financial data safe and your mind at ease every day.',
+        img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
     },
 ]
 
-
-
-
 export default function Blog() {
     return (
-        <section className="py-24 px-6 bg-white">
-            <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-12">
-                    <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">Blog</p>
-                    <h2 className="text-4xl font-semibold text-gray-900 tracking-tight">
+        <section className="bg-white py-24 px-5 md:px-8">
+            <div className="max-w-[1220px] mx-auto">
+                {/* Header */}
+                <div className="flex flex-col items-center text-center mb-14">
+                    {/* Chip */}
+                    <div className="bg-white border border-[#ececec] rounded-full px-4 py-1.5 shadow-[0_4px_8px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] mb-6 w-fit">
+                        <span className="text-[14px] text-[#707070] font-medium">
+                            Blog
+                        </span>
+                    </div>
+
+                    {/* Heading */}
+                    <h2 className="text-[36px] md:text-[50px] leading-[0.96] tracking-[-0.055em] font-medium text-[#111111] max-w-[720px]">
                         Insights to spend smarter.
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
-                    {posts.map((post, i) => (
-                        <div key={i} className="group cursor-pointer">
-                            <div className="overflow-hidden rounded-2xl mb-4">
-                                <img
-                                    src={post.img}
-                                    alt={post.title}
-                                    className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-                                />
+                {/* Blog Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {posts.map((post, index) => (
+                        <article
+                            key={index}
+                            className="group bg-[#fafafa] border border-[#f1f1f1] rounded-[30px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] cursor-pointer"
+                        >
+                            {/* Image */}
+                            <div className="overflow-hidden p-2">
+                                <div className="overflow-hidden rounded-[24px]">
+                                    <img
+                                        src={post.img}
+                                        alt={post.title}
+                                        className="w-full h-[290px] object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                                    />
+                                </div>
                             </div>
-                            <div className="px-1">
-                                <span className="text-[10px] text-blue-500 font-medium uppercase tracking-wider">{post.tag}</span>
-                                <h3 className="text-sm font-semibold text-gray-900 mt-1 leading-snug group-hover:text-blue-500 transition-colors">
+
+                            {/* Content */}
+                            <div className="px-7 pb-7 pt-2">
+                                <h3 className="text-[24px] leading-[1.08] tracking-[-0.045em] font-medium text-[#111111] mb-4 max-w-[320px] transition-colors duration-300">
                                     {post.title}
                                 </h3>
-                                <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">{post.desc}</p>
+
+                                <p className="text-[15px] leading-[1.55] text-[#6f6f6f] max-w-[320px] line-clamp-3">
+                                    {post.desc}
+                                </p>
                             </div>
-                        </div>
+                        </article>
                     ))}
                 </div>
 
-                <div className="flex justify-center mt-10">
-                    <button className="bg-gray-900 text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-gray-700 transition-colors">
+                {/* Button */}
+                <div className="flex justify-center mt-14">
+                    <button className="h-[56px] px-8 rounded-full bg-[#111111] text-white text-[18px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:bg-black transition-all duration-300 hover:scale-[1.02]">
                         Read More
                     </button>
                 </div>
